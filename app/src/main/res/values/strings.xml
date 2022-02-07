@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">Android_Project_v1</string>
+    <string name="app_name">MyLearningApp</string>
+    <string name="login_button">Log In</string>
 </resources>
