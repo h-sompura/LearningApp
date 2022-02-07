@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/textview_lesson_length"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:text="1 hour 20 min" />
+
+    <TextView
+        android:id="@+id/textview_lesson_detail"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textview_lesson_length"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:text="aslkdjasljdajl daljsdhajlshd jlashdjkashdkj askahsjk dahskjdhajks dah" />
+
+
+    <Button
+        android:id="@+id/button_watch_lesson"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textview_lesson_detail"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:text="WATCH LESSON" />
+
+    <TextView
+        android:id="@+id/textview_take_notes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/button_watch_lesson"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="20dp"
+        android:text="Take notes" />
+
+    <EditText
+        android:id="@+id/edittext_take_notes"
+        android:layout_width="300dp"
+        android:layout_height="200dp"
+        android:layout_below="@id/textview_take_notes"
+        android:layout_centerHorizontal="true"
+        android:gravity="start"
+        android:hint="Take notes here..."
+        android:inputType="textMultiLine"
+        android:scrollbars="vertical" />
+
+    <Button
+        android:id="@+id/button_save_notes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/edittext_take_notes"
+        android:layout_alignEnd="@id/edittext_take_notes"
+        android:layout_marginTop="20dp"
+        android:text="SAVE NOTES" />
+
+    <Button
+        android:id="@+id/button_mark_complete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/button_save_notes"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:text="MARK COMPLETE" />
+
+</RelativeLayout>
