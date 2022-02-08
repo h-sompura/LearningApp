@@ -2,6 +2,7 @@ package com.example.learningapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
@@ -9,10 +10,11 @@ import android.view.View;
 import android.widget.EditText;
 
 import com.example.learningapp.databinding.ActivityMainBinding;
-import com.google.android.material.snackbar.BaseTransientBottomBar;
 import com.google.android.material.snackbar.Snackbar;
 
 public class MainActivity extends AppCompatActivity {
+
+    private static final String TAG = "MainActivity";
 
     private ActivityMainBinding binding;
 
@@ -34,13 +36,13 @@ public class MainActivity extends AppCompatActivity {
         this.binding.loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                Log.d("ABC", "Login button pressed");
+                Intent intent = new Intent(MainActivity.this,LessonList.class);
+                Log.d(TAG, "Login button pressed");
 
                 //check if the user has entered BOTH the fields i.e. SHOULD NOT be empty
                 if(username.getText().toString().isEmpty() || password.getText().toString().isEmpty()){
                     //display fields can't be empty
-                    //Log.d("ABC", "Please enter all the required fields!");
+                    //Log.d(TAG, "Please enter all the required fields!");
 
                     Snackbar snackbar = Snackbar.make(view, "Please enter all the fields", Snackbar.LENGTH_LONG);
                     snackbar.setBackgroundTint(Color.rgb(255,249,233));
@@ -55,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
                 //both the fields are entered
                 if(!username.getText().toString().isEmpty() && !password.getText().toString().isEmpty()){
                     //display fields can't be empty
-                    //Log.d("ABC", "The user has entered required fields!");
+                    //Log.d(TAG, "The user has entered required fields!");
 
                     String enteredUsername = username.getText().toString();
                     String enteredPassword = password.getText().toString();
@@ -83,13 +85,12 @@ public class MainActivity extends AppCompatActivity {
                     }
 
                     if(enteredUsername.equals("abcd") && enteredPassword.equals("1234")) {
-                        Snackbar snackbar = Snackbar.make(view, "Login Successful", Snackbar.LENGTH_SHORT);
-                        snackbar.setBackgroundTint(Color.rgb(235,251,246));
-                        snackbar.setTextColor(Color.rgb(52,211,157));
-                        snackbar.show();
 
-                        //TODO move to next activity now! + plus get and send value of the toggle to next activity
+                        //TODO get and save value of the toggle
+                        Log.d(TAG,"Try to go to LessonList activity");
+                        startActivity(intent);
                     }
+
 
                 }
             }
