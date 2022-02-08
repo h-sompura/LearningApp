@@ -2,6 +2,7 @@ package com.example.learningapp;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
@@ -43,13 +44,21 @@ public class LessonList extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //go back to log in
+                //set preferences to false
+                SharedPreferences preferences = getSharedPreferences("saveLoginToggle", MODE_PRIVATE);
+                SharedPreferences.Editor editor = preferences.edit();
+                editor.putBoolean("isLoginSaved",false);
+                editor.apply();
+
 
                 Intent intent = new Intent(LessonList.this,MainActivity.class);
                 Log.d(TAG, "Logout button pressed");
 
                 startActivity(intent);
+                finish();
             }
         });
+
     }
 
 

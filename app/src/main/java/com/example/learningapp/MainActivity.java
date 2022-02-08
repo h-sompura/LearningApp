@@ -3,11 +3,15 @@ package com.example.learningapp;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.Switch;
 
 import com.example.learningapp.databinding.ActivityMainBinding;
 import com.google.android.material.snackbar.Snackbar;
@@ -20,6 +24,10 @@ public class MainActivity extends AppCompatActivity {
 
     private EditText username;
     private EditText password;
+    private Switch saveLoginSwitch;
+    private Button loginButton;
+
+    private Boolean isLoginSaved;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,8 +37,20 @@ public class MainActivity extends AppCompatActivity {
         setContentView(this.binding.getRoot());
 
         //get fields
-        username = findViewById(R.id.etUserName);
-        password = findViewById(R.id.etPassword);
+        username = this.binding.etUserName;
+        password = this.binding.etPassword;
+        saveLoginSwitch = this.binding.saveLoginToggle;
+        loginButton = this.binding.loginButton;
+//        isLoginSaved = saveLoginSwitch.isChecked();
+        SharedPreferences preferences = getSharedPreferences("saveLoginToggle", MODE_PRIVATE);
+        saveLoginSwitch.setChecked(preferences.getBoolean("isLoginSaved",true));
+        isLoginSaved = saveLoginSwitch.isChecked();
+
+        if(isLoginSaved){
+            Intent intent = new Intent(MainActivity.this,LessonList.class);
+            startActivity(intent);
+        }
+
 
         //programmatically creating the button onClick
         this.binding.loginButton.setOnClickListener(new View.OnClickListener() {
@@ -86,7 +106,6 @@ public class MainActivity extends AppCompatActivity {
 
                     if(enteredUsername.equals("abcd") && enteredPassword.equals("1234")) {
 
-                        //TODO get and save value of the toggle
                         Log.d(TAG,"Try to go to LessonList activity");
                         startActivity(intent);
                     }
@@ -95,5 +114,27 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+
+        //set event listener for save login toggle
+        saveLoginSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if(compoundButton.isChecked()){
+                    //save the value as true
+                    SharedPreferences preferences = getSharedPreferences("saveLoginToggle", MODE_PRIVATE);
+                    SharedPreferences.Editor editor = preferences.edit();
+                    editor.putBoolean("isLoginSaved",true);
+                    editor.apply();
+
+                } else if (!compoundButton.isChecked()){
+                    //save the value as false
+                    SharedPreferences preferences = getSharedPreferences("saveLoginToggle", MODE_PRIVATE);
+                    SharedPreferences.Editor editor = preferences.edit();
+                    editor.putBoolean("isLoginSaved",false);
+                    editor.apply();
+                }
+            }
+        });
+
     }
 }
