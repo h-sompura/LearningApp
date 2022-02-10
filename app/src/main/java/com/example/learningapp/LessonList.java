@@ -7,6 +7,8 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ListView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -22,6 +24,9 @@ public class LessonList extends AppCompatActivity {
     //binding
     private ListLessonBinding binding;
 
+    ListView lessonListView;
+    Lesson[] lessons;
+    private LessonAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +43,8 @@ public class LessonList extends AppCompatActivity {
         snackbar.setTextColor(Color.rgb(52,211,157));
         snackbar.show();
 
+        //configuring list view
+        configureListView();
 
         //on logout
         this.binding.logoutButton.setOnClickListener(new View.OnClickListener() {
@@ -60,6 +67,44 @@ public class LessonList extends AppCompatActivity {
         });
 
     }
+        private void configureListView() {
+        // lessonListView = findViewById(R.id.listview_lesson_list);
+        lessonListView = binding.listviewLessonList;
+
+        lessons = Lesson.getInstances();
+
+        lessonListView.setClickable(true);
+        // ArrayAdapter<Lesson> lessonArrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, lessons);
+        adapter = new LessonAdapter(this, lessons);
+        // adapter.notifyDataSetChanged();
+        lessonListView.setAdapter(adapter);
+
+        // List action for tapping on a row of the ListView
+        lessonListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                // send info to new activity (LessonDetailActivity)
+
+                Log.d("xDEBUG", "i: " + i);
+                Log.d("xDEBUG", "lessons[i].lessonNumber: " + lessons[i].getLessonNumber());
+                Intent intent = new Intent(LessonList.this, LessonDetail.class);
+
+                // TODO : try to send Lesson from serialized extra object
+                intent.putExtra("lessonNumber", lessons[i].getLessonNumber());
+                // intent.putExtra("lessonFromList", lessons[i]);
+
+                startActivity(intent);
+            }
+        });
+
+    }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.d("xDEBUG", "onResume: lessons[0].isCompleted = " + lessons[0].isCompleted());
+        adapter.notifyDataSetChanged();
+    }
 
 
 }
+
