@@ -37,14 +37,15 @@ public class LessonAdapter extends ArrayAdapter<Lesson> {
 
         Lesson lesson = getItem(position);
 
+        binding.lessonNumber.setText(String.valueOf(lesson.getLessonNumber()));
         binding.textViewListItemName.setText(lesson.getName());
-        binding.textViewListItemLength.setText(lesson.lengthConverter(lesson.getLength()));
+        binding.textViewListItemLength.setText("Length:  "+ lesson.lengthConverter(lesson.getLength()));
 
         if(lesson.isCompleted()) {
-            binding.textViewChecked.setVisibility(View.VISIBLE);
+            binding.ivCheckMark.setVisibility(View.VISIBLE);
         }
         else {
-            binding.textViewChecked.setVisibility(View.INVISIBLE);
+            binding.ivCheckMark.setVisibility(View.INVISIBLE);
         }
 
         return convertView;
