@@ -10,8 +10,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.LearningApp">
         <activity
-            android:name=".LessonDetail"
-            android:exported="false" />
+            android:name=".LessonDetailActivity"
+            android:exported="false"
+            android:label="Lesson Details"
+            />
         <activity
             android:name=".MainActivity"
             android:exported="true">
@@ -21,7 +23,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".LessonList" />
+        <activity android:name=".LessonListActivity" />
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />

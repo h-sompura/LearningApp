@@ -1,110 +1,43 @@
 package com.example.learningapp;
 
-import android.app.Activity;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.graphics.Color;
-import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ListView;
+import java.util.ArrayList;
 
-import androidx.appcompat.app.AppCompatActivity;
+public class LessonList {
 
+    private static ArrayList<Lesson> lessonList = null;
 
-import com.example.learningapp.databinding.ListLessonBinding;
-import com.google.android.material.snackbar.Snackbar;
+    private  LessonList() {}
 
-public class LessonList extends AppCompatActivity {
+    public static ArrayList<Lesson> getLessons() {
+        if(lessonList == null) {
+            lessonList = new ArrayList<>();
 
-    private static final String TAG = "LessonList";
+            lessonList.add(new Lesson(
+                    1,
+                    "Introduction to the course",
+                    12,
+                    "https://www.youtube.com/watch?v=qz0aGYrrlhU&ab_channel=ProgrammingwithMosh",
+                    false));
+            lessonList.add(new Lesson(
+                    2,
+                    "What is Javascript",
+                    30,
+                    "https://www.youtube.com/watch?v=upDLs1sn7g4&ab_channel=ProgrammingwithMosh",
+                    false));
+            lessonList.add(new Lesson(
+                    3,
+                    "Variables and conditionals",
+                    80,
+                    "https://www.youtube.com/watch?v=edlFjlzxkSI",
+                    false));
+            lessonList.add(new Lesson(
+                    4,
+                    "Loops",
+                    38,
+                    "https://www.youtube.com/watch?v=s9wW2PpJsmQ&ab_channel=ProgrammingwithMosh",
+                    false));
+        }
 
-
-    //binding
-    private ListLessonBinding binding;
-
-    ListView lessonListView;
-    Lesson[] lessons;
-    private LessonAdapter adapter;
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        //setting binding variable
-        this.binding = ListLessonBinding.inflate(getLayoutInflater());
-        setContentView(this.binding.getRoot());
-
-        Log.d(TAG, "Lesson List Screen created");
-
-        //creating a successfully logged in message
-        Snackbar snackbar = Snackbar.make((findViewById(android.R.id.content)), "Successfully logged in", Snackbar.LENGTH_LONG);
-        snackbar.setBackgroundTint(Color.rgb(235,251,246));
-        snackbar.setTextColor(Color.rgb(52,211,157));
-        snackbar.show();
-
-        //configuring list view
-        configureListView();
-
-        //on logout
-        this.binding.logoutButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //go back to log in
-                //set preferences to false
-                SharedPreferences preferences = getSharedPreferences("saveLoginToggle", MODE_PRIVATE);
-                SharedPreferences.Editor editor = preferences.edit();
-                editor.putBoolean("isLoginSaved",false);
-                editor.apply();
-
-
-                Intent intent = new Intent(LessonList.this,MainActivity.class);
-                Log.d(TAG, "Logout button pressed");
-
-                startActivity(intent);
-                finish();
-            }
-        });
-
+        return lessonList;
     }
-        private void configureListView() {
-        // lessonListView = findViewById(R.id.listview_lesson_list);
-        lessonListView = binding.listviewLessonList;
-
-        lessons = Lesson.getInstances();
-
-        lessonListView.setClickable(true);
-        // ArrayAdapter<Lesson> lessonArrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, lessons);
-        adapter = new LessonAdapter(this, lessons);
-        // adapter.notifyDataSetChanged();
-        lessonListView.setAdapter(adapter);
-
-        // List action for tapping on a row of the ListView
-        lessonListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                // send info to new activity (LessonDetailActivity)
-
-                Log.d("xDEBUG", "i: " + i);
-                Log.d("xDEBUG", "lessons[i].lessonNumber: " + lessons[i].getLessonNumber());
-                Intent intent = new Intent(LessonList.this, LessonDetail.class);
-
-                // TODO : try to send Lesson from serialized extra object
-                intent.putExtra("lessonNumber", lessons[i].getLessonNumber());
-                // intent.putExtra("lessonFromList", lessons[i]);
-
-                startActivity(intent);
-            }
-        });
-
-    }
-    @Override
-    protected void onResume() {
-        super.onResume();
-        Log.d("xDEBUG", "onResume: lessons[0].isCompleted = " + lessons[0].isCompleted());
-        adapter.notifyDataSetChanged();
-    }
-
-
 }
-

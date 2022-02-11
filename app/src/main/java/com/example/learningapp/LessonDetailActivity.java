@@ -2,6 +2,7 @@ package com.example.learningapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -16,7 +17,7 @@ import android.widget.Toast;
 
 import com.example.learningapp.databinding.ActivityLessonDetailBinding;
 
-public class LessonDetail extends AppCompatActivity {
+public class LessonDetailActivity extends AppCompatActivity {
     private static final String TAG = "xDEBUG";
     public static final String PREFERENCES = "DetailPrefs";
 
@@ -24,7 +25,7 @@ public class LessonDetail extends AppCompatActivity {
 
     TextView lessonDetailTextView, lessonLengthTextView;
     EditText lessonNotesEditText;
-    Button completeLessonButton, saveNotesButton, watchlessonButton;
+    Button completeLessonButton, saveNotesButton, watchLessonButton;
     Lesson lesson;
     SharedPreferences sharedpreferences;
 
@@ -57,14 +58,14 @@ public class LessonDetail extends AppCompatActivity {
     private Lesson getLessonInfo() {
         int lessonNumber = getIntent().getIntExtra("lessonNumber", 0);
         int index = lessonNumber - 1;
-        return Lesson.getInstance(index);
+        return LessonList.getLessons().get(index);
     }
 
     private void bindViews() {
         lessonDetailTextView = binding.textviewLessonDetail;
         lessonLengthTextView = binding.textviewLessonLength;
         completeLessonButton = binding.buttonMarkComplete;
-        watchlessonButton = binding.buttonWatchLesson;
+        watchLessonButton = binding.buttonWatchLesson;
         saveNotesButton = binding.buttonSaveNotes;
         lessonNotesEditText = binding.edittextTakeNotes;
     }
@@ -85,6 +86,9 @@ public class LessonDetail extends AppCompatActivity {
 
         lessonDetailTextView.setText(lesson.getName());
         lessonLengthTextView.setText(lesson.lengthConverter(lesson.getLength()));
+
+        // Set the title of the view to the Lesson name
+        setTitle(lesson.getLessonNumber() + ". Lesson " + lesson.getName());
     }
 
     private void configureButtonActions() {
@@ -109,18 +113,24 @@ public class LessonDetail extends AppCompatActivity {
                 editor.apply();
                 lesson.setNote(note); // Add note to the Lesson object as well
                 Log.d(TAG, "sharedPreferences: " + sharedpreferences.getString(lessonNotesKey, ""));
-                Toast.makeText(LessonDetail.this, "Note is saved.", Toast.LENGTH_LONG).show();
+                Toast.makeText(LessonDetailActivity.this, "Note is saved.", Toast.LENGTH_LONG).show();
             }
         });
 
         // Button action to watch the youtube video of the lesson
-        watchlessonButton.setOnClickListener(new View.OnClickListener() {
+        watchLessonButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 //watch the video intent
                 Intent openVideo = new Intent(Intent.ACTION_VIEW, Uri.parse(lesson.getUrl()));
 
-                startActivity(openVideo);
+                try {
+                    startActivity(openVideo);
+                }
+                catch (ActivityNotFoundException e) {
+                    Toast.makeText(LessonDetailActivity.this, "An error occurred during opening the video", Toast.LENGTH_LONG).show();
+                }
+
             }
         });
     }

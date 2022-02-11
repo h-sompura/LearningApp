@@ -12,6 +12,7 @@ import androidx.annotation.Nullable;
 import com.example.learningapp.databinding.LessonListviewBinding;
 import com.example.learningapp.databinding.ListLessonBinding;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class LessonAdapter extends ArrayAdapter<Lesson> {
@@ -20,7 +21,7 @@ public class LessonAdapter extends ArrayAdapter<Lesson> {
 
     private LessonListviewBinding binding;
 
-    public LessonAdapter(Context context, Lesson[] lessonArray) {
+    public LessonAdapter(Context context, ArrayList<Lesson> lessonArray) {
         super(context, 0, lessonArray);
     }
 
