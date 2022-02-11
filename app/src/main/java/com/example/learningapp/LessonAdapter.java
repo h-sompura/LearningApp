@@ -29,7 +29,7 @@ public class LessonAdapter extends ArrayAdapter<Lesson> {
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
 
-        if(convertView == null) {
+        if (convertView == null) {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.lesson_listview, parent, false);
         }
 
@@ -39,12 +39,11 @@ public class LessonAdapter extends ArrayAdapter<Lesson> {
 
         binding.lessonNumber.setText(String.valueOf(lesson.getLessonNumber()));
         binding.textViewListItemName.setText(lesson.getName());
-        binding.textViewListItemLength.setText("Length:  "+ lesson.lengthConverter(lesson.getLength()));
+        binding.textViewListItemLength.setText("Length:  " + lesson.lengthConverter(lesson.getLength()));
 
-        if(lesson.isCompleted()) {
+        if (lesson.isCompleted()) {
             binding.ivCheckMark.setVisibility(View.VISIBLE);
-        }
-        else {
+        } else {
             binding.ivCheckMark.setVisibility(View.INVISIBLE);
         }
 

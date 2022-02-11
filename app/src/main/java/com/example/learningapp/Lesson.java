@@ -6,14 +6,16 @@ public class Lesson implements Serializable {
 
     private int lessonNumber;
     private String name;
+    private String description;
     private int length;
     private String url;
     private boolean isCompleted;
     private String note;
 
-    public Lesson(int lessonNumber, String name, int length, String url, boolean isCompleted) {
+    public Lesson(int lessonNumber, String name, String description, int length, String url, boolean isCompleted) {
         this.lessonNumber = lessonNumber;
         this.name = name;
+        this.description = description;
         this.length = length;
         this.url = url;
         this.isCompleted = isCompleted;
@@ -38,6 +40,10 @@ public class Lesson implements Serializable {
 
     public String getName() {
         return name;
+    }
+
+    public String getDescription() {
+        return description;
     }
 
     public void setName(String name) {

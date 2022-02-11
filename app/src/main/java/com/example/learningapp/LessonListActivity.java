@@ -39,8 +39,8 @@ public class LessonListActivity extends AppCompatActivity {
 
         //creating a successfully logged in message
         Snackbar snackbar = Snackbar.make((findViewById(android.R.id.content)), "Successfully logged in", Snackbar.LENGTH_LONG);
-        snackbar.setBackgroundTint(Color.rgb(235,251,246));
-        snackbar.setTextColor(Color.rgb(52,211,157));
+        snackbar.setBackgroundTint(Color.rgb(235, 251, 246));
+        snackbar.setTextColor(Color.rgb(52, 211, 157));
         snackbar.show();
 
         //configuring list view
@@ -54,11 +54,11 @@ public class LessonListActivity extends AppCompatActivity {
                 //set preferences to false
                 SharedPreferences preferences = getSharedPreferences("saveLoginToggle", MODE_PRIVATE);
                 SharedPreferences.Editor editor = preferences.edit();
-                editor.putBoolean("isLoginSaved",false);
+                editor.putBoolean("isLoginSaved", false);
                 editor.apply();
 
 
-                Intent intent = new Intent(LessonListActivity.this,MainActivity.class);
+                Intent intent = new Intent(LessonListActivity.this, MainActivity.class);
                 Log.d(TAG, "Logout button pressed");
 
                 startActivity(intent);
@@ -67,7 +67,8 @@ public class LessonListActivity extends AppCompatActivity {
         });
 
     }
-        private void configureListView() {
+
+    private void configureListView() {
         // lessonListView = findViewById(R.id.listview_lesson_list);
         lessonListView = binding.listviewLessonList;
 
@@ -98,6 +99,7 @@ public class LessonListActivity extends AppCompatActivity {
         });
 
     }
+
     @Override
     protected void onResume() {
         super.onResume();

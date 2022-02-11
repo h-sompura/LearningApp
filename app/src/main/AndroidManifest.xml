@@ -12,7 +12,6 @@
         <activity
             android:name=".LessonDetailActivity"
             android:exported="false"
-            android:label="Lesson Details"
             />
         <activity
             android:name=".MainActivity"

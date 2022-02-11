@@ -9,16 +9,16 @@ public class User {
 
 
     //constructor
-    public User(String username, String password){
+    public User(String username, String password) {
         this.username = username;
         this.password = password;
     }
 
-    public String getUsername(){
+    public String getUsername() {
         return username;
     }
 
-    public String getPassword(){
+    public String getPassword() {
         return password;
     }
 

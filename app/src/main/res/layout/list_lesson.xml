@@ -11,8 +11,8 @@
         android:layout_marginTop="1dp"
         android:layout_marginEnd="78dp"
         android:fontFamily="@font/source_sans_pro_semibold"
-        android:text="Learn HTML and CSS 💻"
-        android:textSize="24dp" />
+        android:text="@string/app_heading"
+        android:textSize="24sp" />
 
     <androidx.appcompat.widget.SwitchCompat
         android:id="@+id/switch_sequential_progress"
@@ -20,18 +20,18 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/appHeading"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="36dp"
-        android:layout_marginEnd="103dp"
-        android:text="Force sequential progression?" />
+        android:layout_marginTop="35dp"
+        android:layout_marginEnd="84dp"
+        android:text="@string/force_sequential_progression" />
 
     <ListView
         android:id="@+id/listview_lesson_list"
         android:layout_width="match_parent"
-        android:layout_height="500dp"
+        android:layout_height="wrap_content"
         android:layout_above="@+id/logoutButton"
         android:layout_below="@id/switch_sequential_progress"
-        android:layout_marginTop="27dp"
-        android:layout_marginBottom="45dp">
+        android:layout_marginTop="24dp"
+        android:layout_marginBottom="-5dp">
 
     </ListView>
 
@@ -41,8 +41,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginEnd="99dp"
-        android:layout_marginBottom="25dp"
-        android:text="Logout" />
+        android:layout_marginEnd="106dp"
+        android:layout_marginBottom="44dp"
+        android:text="@string/logout" />
 
 </RelativeLayout>

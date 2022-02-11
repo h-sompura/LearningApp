@@ -19,6 +19,7 @@
         <item name="actionBarStyle">@style/MyActionBarDarkStyle</item>
         <item name="editTextStyle">@style/App_EditTextStyle</item>
     </style>
+
     <style name="myCustomButton" parent="Widget.MaterialComponents.Button">
         <item name="backgroundTint">@color/primary</item>
         <item name="fontFamily">@font/source_sans_pro_black</item>

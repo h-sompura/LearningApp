@@ -57,9 +57,9 @@ public class MainActivity extends AppCompatActivity {
         }
 
         // add user class and go through the list of users and see if this is a match
-        usersList.add(new User("abcd","1234"));
-        usersList.add(new User("xyz","5678"));
-        usersList.add(new User("admin","admin"));
+        usersList.add(new User("abcd", "1234"));
+        usersList.add(new User("xyz", "5678"));
+        usersList.add(new User("admin", "admin"));
 
 
         //programmatically creating the button onClick
@@ -120,7 +120,7 @@ public class MainActivity extends AppCompatActivity {
 //                        startActivity(intent);
 //                    }
 
-                    if(isUsernamePresent(usersList, enteredUsername)){
+                    if (isUsernamePresent(usersList, enteredUsername)) {
                         //user enters something other than usernames present in our list
                         Snackbar snackbar = Snackbar.make(view, "The username does not exist", Snackbar.LENGTH_LONG);
                         snackbar.setBackgroundTint(Color.rgb(255, 233, 217));
@@ -131,7 +131,7 @@ public class MainActivity extends AppCompatActivity {
                         username.getText().clear();
                         password.getText().clear();
                     } else {
-                        for(User i : usersList) {
+                        for (User i : usersList) {
                             if (enteredUsername.equals(i.getUsername()) && enteredPassword.equals(i.getPassword())) {
 
                                 Log.d(TAG, "Try to go to LessonList activity");
@@ -176,11 +176,12 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+
     //check if user exists
-    public Boolean isUsernamePresent(ArrayList<User> usersList, String username){
+    public Boolean isUsernamePresent(ArrayList<User> usersList, String username) {
         Boolean result = true;
-        for(User i : usersList){
-            if(i.getUsername().compareTo(username) == 0){
+        for (User i : usersList) {
+            if (i.getUsername().compareTo(username) == 0) {
                 result = false;
             }
         }

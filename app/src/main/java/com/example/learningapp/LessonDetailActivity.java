@@ -23,7 +23,7 @@ public class LessonDetailActivity extends AppCompatActivity {
 
     private ActivityLessonDetailBinding binding;
 
-    TextView lessonDetailTextView, lessonLengthTextView;
+    TextView lessonDetailTextView, lessonLengthTextView, lessonNumberTextView, lessonDescriptionTextView;
     EditText lessonNotesEditText;
     Button completeLessonButton, saveNotesButton, watchLessonButton;
     Lesson lesson;
@@ -64,6 +64,8 @@ public class LessonDetailActivity extends AppCompatActivity {
     private void bindViews() {
         lessonDetailTextView = binding.textviewLessonDetail;
         lessonLengthTextView = binding.textviewLessonLength;
+        lessonNumberTextView = binding.lessonNumber;
+        lessonDescriptionTextView = binding.textviewLessonDescription;
         completeLessonButton = binding.buttonMarkComplete;
         watchLessonButton = binding.buttonWatchLesson;
         saveNotesButton = binding.buttonSaveNotes;
@@ -84,11 +86,17 @@ public class LessonDetailActivity extends AppCompatActivity {
         // Set Lesson Notes from SharedPreferences
         lessonNotesEditText.setText(sharedpreferences.getString(lessonNotesKey, ""));
 
-        lessonDetailTextView.setText(lesson.getName());
-        lessonLengthTextView.setText(lesson.lengthConverter(lesson.getLength()));
+        //add number
+        lessonNumberTextView.setText((String.valueOf(lesson.getLessonNumber()) + "."));
+        lessonDescriptionTextView.setText(lesson.getDescription());
 
-        // Set the title of the view to the Lesson name
-        setTitle(lesson.getLessonNumber() + ". Lesson " + lesson.getName());
+        lessonDetailTextView.setText(lesson.getName());
+
+
+        lessonLengthTextView.setText("Length: " + lesson.lengthConverter(lesson.getLength()));
+
+//        // Set the title of the view to the Lesson name
+//        setTitle(lesson.getLessonNumber() + ". Lesson " + lesson.getName());
     }
 
     private void configureButtonActions() {
@@ -126,8 +134,7 @@ public class LessonDetailActivity extends AppCompatActivity {
 
                 try {
                     startActivity(openVideo);
-                }
-                catch (ActivityNotFoundException e) {
+                } catch (ActivityNotFoundException e) {
                     Toast.makeText(LessonDetailActivity.this, "An error occurred during opening the video", Toast.LENGTH_LONG).show();
                 }
 
