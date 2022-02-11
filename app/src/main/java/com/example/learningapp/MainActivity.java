@@ -16,6 +16,8 @@ import android.widget.Switch;
 import com.example.learningapp.databinding.ActivityMainBinding;
 import com.google.android.material.snackbar.Snackbar;
 
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "MainActivity";
@@ -28,6 +30,9 @@ public class MainActivity extends AppCompatActivity {
     private Button loginButton;
 
     private Boolean isLoginSaved;
+
+    private ArrayList<User> usersList = new ArrayList<User>();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,7 +56,11 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
         }
 
-        // TODO : add user class and go through the list of users and see if this is a match
+        // add user class and go through the list of users and see if this is a match
+        usersList.add(new User("abcd","1234"));
+        usersList.add(new User("xyz","5678"));
+        usersList.add(new User("admin","admin"));
+
 
         //programmatically creating the button onClick
         this.binding.loginButton.setOnClickListener(new View.OnClickListener() {
@@ -83,9 +92,36 @@ public class MainActivity extends AppCompatActivity {
                     String enteredUsername = username.getText().toString();
                     String enteredPassword = password.getText().toString();
 
+//                    if (!enteredUsername.equals("abcd")) {
+//                        //user enters something other than abcd
+//                        Snackbar snackbar = Snackbar.make(view, "The username does not exist", Snackbar.LENGTH_LONG);
+//                        snackbar.setBackgroundTint(Color.rgb(255, 233, 217));
+//                        snackbar.setTextColor(Color.rgb(244, 86, 40));
+//                        snackbar.show();
+//
+//                        //clear the fields
+//                        username.getText().clear();
+//                        password.getText().clear();
+//
+//                    } else {
+//                        Snackbar snackbar = Snackbar.make(view, "The username/password combination does not match", Snackbar.LENGTH_LONG);
+//                        snackbar.setBackgroundTint(Color.rgb(255, 233, 217));
+//                        snackbar.setTextColor(Color.rgb(244, 86, 40));
+//                        snackbar.show();
+//
+//                        //clear the fields
+//                        username.getText().clear();
+//                        password.getText().clear();
+//                    }
+//
+//                    if (enteredUsername.equals("abcd") && enteredPassword.equals("1234")) {
+//
+//                        Log.d(TAG, "Try to go to LessonList activity");
+//                        startActivity(intent);
+//                    }
 
-                    if (!enteredUsername.equals("abcd")) {
-                        //user enters something other than abcd
+                    if(isUsernamePresent(usersList, enteredUsername)){
+                        //user enters something other than usernames present in our list
                         Snackbar snackbar = Snackbar.make(view, "The username does not exist", Snackbar.LENGTH_LONG);
                         snackbar.setBackgroundTint(Color.rgb(255, 233, 217));
                         snackbar.setTextColor(Color.rgb(244, 86, 40));
@@ -94,23 +130,25 @@ public class MainActivity extends AppCompatActivity {
                         //clear the fields
                         username.getText().clear();
                         password.getText().clear();
-
                     } else {
-                        Snackbar snackbar = Snackbar.make(view, "The username/password combination does not match", Snackbar.LENGTH_LONG);
-                        snackbar.setBackgroundTint(Color.rgb(255, 233, 217));
-                        snackbar.setTextColor(Color.rgb(244, 86, 40));
-                        snackbar.show();
+                        for(User i : usersList) {
+                            if (enteredUsername.equals(i.getUsername()) && enteredPassword.equals(i.getPassword())) {
 
-                        //clear the fields
-                        username.getText().clear();
-                        password.getText().clear();
+                                Log.d(TAG, "Try to go to LessonList activity");
+                                startActivity(intent);
+                            } else {
+                                Snackbar snackbar = Snackbar.make(view, "The username/password combination does not match", Snackbar.LENGTH_LONG);
+                                snackbar.setBackgroundTint(Color.rgb(255, 233, 217));
+                                snackbar.setTextColor(Color.rgb(244, 86, 40));
+                                snackbar.show();
+
+                                //clear the fields
+                                username.getText().clear();
+                                password.getText().clear();
+                            }
+                        }
                     }
 
-                    if (enteredUsername.equals("abcd") && enteredPassword.equals("1234")) {
-
-                        Log.d(TAG, "Try to go to LessonList activity");
-                        startActivity(intent);
-                    }
                 }
             }
         });
@@ -136,5 +174,17 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
     }
+    //check if user exists
+    public Boolean isUsernamePresent(ArrayList<User> usersList, String username){
+        Boolean result = true;
+        for(User i : usersList){
+            if(i.getUsername().compareTo(username) == 0){
+                result = false;
+            }
+        }
+        return result;
+    }
+
 }
