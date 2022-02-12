@@ -68,6 +68,12 @@ public class LessonListActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        adapter.notifyDataSetChanged();
+    }
+
     private void configureListView() {
         // lessonListView = findViewById(R.id.listview_lesson_list);
         lessonListView = binding.listviewLessonList;
@@ -84,10 +90,14 @@ public class LessonListActivity extends AppCompatActivity {
         lessonListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                // send info to new activity (LessonDetailActivity)
 
-                Log.d("xDEBUG", "i: " + i);
-                Log.d("xDEBUG", "lessons[i].lessonNumber: " + lessonList.get(i).getLessonNumber());
+                // Check for Sequential Progression...
+                if(binding.switchSequentialProgress.isChecked()) {
+                    if(i != 0 && !lessonList.get(i - 1).isCompleted()) {
+                        return;
+                    }
+                }
+
                 Intent intent = new Intent(LessonListActivity.this, LessonDetailActivity.class);
 
                 // TODO : try to send Lesson from serialized extra object
@@ -100,11 +110,7 @@ public class LessonListActivity extends AppCompatActivity {
 
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        adapter.notifyDataSetChanged();
-    }
+
 
 
 }
