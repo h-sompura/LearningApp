@@ -4,4 +4,14 @@
     <string name="app_heading">Learn HTML and CSS 💻</string>
     <string name="force_sequential_progression">Force sequential progression?</string>
     <string name="logout">Logout</string>
+
+    <string name="hint_username">Enter username</string>
+    <string name="hint_password">Enter password</string>
+    <string name="text_view_save_login">Save login next time?</string>
+
+    <string name="button_watch_lesson">WATCH LESSON</string>
+    <string name="button_save_notes">SAVE NOTES</string>
+    <string name="button_mark_complete">MARK COMPLETE</string>
+    <string name="text_view_take_note">Take Notes</string>
+    <string name="hint_take_note">Take notes here...</string>
 </resources>
