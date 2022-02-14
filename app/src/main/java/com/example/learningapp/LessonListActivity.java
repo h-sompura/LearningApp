@@ -94,6 +94,11 @@ public class LessonListActivity extends AppCompatActivity {
                 // Check for Sequential Progression...
                 if(binding.switchSequentialProgress.isChecked()) {
                     if(i != 0 && !lessonList.get(i - 1).isCompleted()) {
+                        //creating a snackbar for seq toggle
+                        Snackbar snackbar = Snackbar.make((findViewById(android.R.id.content)), "You have to complete lesson " + i +" to start this lesson.", Snackbar.LENGTH_LONG);
+                        snackbar.setBackgroundTint(Color.rgb(255, 249, 233));
+                        snackbar.setTextColor(Color.rgb(255, 192, 46));
+                        snackbar.show();
                         return;
                     }
                 }

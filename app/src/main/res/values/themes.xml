@@ -16,6 +16,7 @@
         <item name="materialButtonStyle">@style/myCustomButton</item>
         <item name="android:fontFamily">@font/source_sans_pro</item>
         <item name="editTextStyle">@style/App_EditTextStyle</item>
+        <item name="snackbarTextViewStyle">@style/mySnackbar</item>
     </style>
     <!-- Our custom login button -->
     <style name="myCustomButton" parent="Widget.MaterialComponents.Button">
@@ -43,4 +44,11 @@
         <item name="android:paddingTop">14dp</item>
         <item name="android:paddingBottom">14dp</item>
     </style>
+
+    <!-- Custom snackbar size    -->
+    <style name="mySnackbar" parent="@style/Widget.MaterialComponents.Snackbar.TextView">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
 </resources>

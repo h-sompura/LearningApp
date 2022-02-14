@@ -87,11 +87,12 @@
         <Button
             android:id="@+id/button_mark_complete"
             android:layout_width="wrap_content"
-            android:layout_height="63dp"
+            android:layout_height="wrap_content"
             android:layout_below="@id/button_save_notes"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="41dp"
             android:layout_marginBottom="41dp"
+            android:gravity="center_horizontal|center_vertical"
             android:text="@string/button_mark_complete"
             android:textSize="20sp" />
 

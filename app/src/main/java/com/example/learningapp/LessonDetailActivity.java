@@ -6,6 +6,7 @@ import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
@@ -16,6 +17,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.learningapp.databinding.ActivityLessonDetailBinding;
+import com.google.android.material.snackbar.Snackbar;
 
 public class LessonDetailActivity extends AppCompatActivity {
     private static final String TAG = "xDEBUG";
@@ -121,7 +123,11 @@ public class LessonDetailActivity extends AppCompatActivity {
                 editor.apply();
                 lesson.setNote(note); // Add note to the Lesson object as well
                 Log.d(TAG, "sharedPreferences: " + sharedpreferences.getString(lessonNotesKey, ""));
-                Toast.makeText(LessonDetailActivity.this, "Note is saved.", Toast.LENGTH_LONG).show();
+                //creating a snackbar for notes saved
+                Snackbar snackbar = Snackbar.make((findViewById(android.R.id.content)), "Your notes were saved.", Snackbar.LENGTH_LONG);
+                snackbar.setBackgroundTint(Color.rgb(209, 196, 233));
+                snackbar.setTextColor(Color.rgb(81, 45, 168));
+                snackbar.show();
             }
         });
 
