@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView android:layout_width="match_parent"
+<ScrollView xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
@@ -9,9 +10,9 @@
         android:layout_height="wrap_content">
 
         <LinearLayout
+            android:id="@+id/ll_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/ll_title"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="12dp">
 
@@ -35,13 +36,16 @@
 
         <Button
             android:id="@+id/button_watch_lesson"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/textview_lesson_description"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="24dp"
             android:text="@string/button_watch_lesson"
-            android:textSize="12sp" />
+            android:textColor="@color/accent"
+            android:textSize="12sp"
+            app:strokeColor="@color/accent" />
 
         <TextView
             android:id="@+id/textview_lesson_description"
@@ -80,7 +84,8 @@
             android:layout_below="@id/edittext_take_notes"
             android:layout_alignEnd="@id/edittext_take_notes"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="19dp"
+            android:layout_marginTop="1dp"
+            android:layout_marginEnd="1dp"
             android:text="@string/button_save_notes"
             android:textSize="14sp" />
 
@@ -90,7 +95,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/button_save_notes"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="41dp"
+            android:layout_marginTop="57dp"
             android:layout_marginBottom="41dp"
             android:gravity="center_horizontal|center_vertical"
             android:text="@string/button_mark_complete"
