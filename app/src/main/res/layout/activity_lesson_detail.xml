@@ -10,23 +10,23 @@
         android:layout_height="wrap_content">
 
         <LinearLayout
-            android:id="@+id/ll_title"
+            android:id="@+id/linearLayoutTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="12dp">
 
             <TextView
-                android:id="@+id/lesson_number"
+                android:id="@+id/lessonNumber"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 tools:text="Number" />
 
             <TextView
-                android:id="@+id/textview_lesson_detail"
+                android:id="@+id/textViewLessonDetail"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignStart="@+id/lesson_number"
+                android:layout_alignStart="@+id/lessonNumber"
                 android:layout_marginStart="2dp"
                 android:layout_marginLeft="54dp"
                 android:layout_marginRight="0dp"
@@ -35,11 +35,11 @@
         </LinearLayout>
 
         <Button
-            android:id="@+id/button_watch_lesson"
+            android:id="@+id/buttonWatchLesson"
             style="@style/Widget.MaterialComponents.Button.OutlinedButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/textview_lesson_description"
+            android:layout_below="@+id/textViewLessonDescription"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="24dp"
             android:text="@string/button_watch_lesson"
@@ -48,28 +48,28 @@
             app:strokeColor="@color/accent" />
 
         <TextView
-            android:id="@+id/textview_lesson_description"
+            android:id="@+id/textViewLessonDescription"
             android:layout_width="350dp"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/textview_lesson_length"
+            android:layout_below="@+id/textViewLessonLength"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="12dp"
             tools:text="test test test test test test test test test test" />
 
         <TextView
-            android:id="@+id/textview_lesson_length"
+            android:id="@+id/textViewLessonLength"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/ll_title"
+            android:layout_below="@+id/linearLayoutTitle"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="6dp"
             tools:text="1 hour 20 min" />
 
         <EditText
-            android:id="@+id/edittext_take_notes"
+            android:id="@+id/editTextTakeNotes"
             android:layout_width="300dp"
             android:layout_height="200dp"
-            android:layout_below="@+id/textview_take_notes"
+            android:layout_below="@+id/textViewTakeNotes"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="1dp"
             android:gravity="start"
@@ -78,11 +78,11 @@
             android:scrollbars="vertical" />
 
         <Button
-            android:id="@+id/button_save_notes"
+            android:id="@+id/buttonSaveNotes"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/edittext_take_notes"
-            android:layout_alignEnd="@id/edittext_take_notes"
+            android:layout_below="@id/editTextTakeNotes"
+            android:layout_alignEnd="@id/editTextTakeNotes"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="1dp"
             android:layout_marginEnd="1dp"
@@ -90,10 +90,10 @@
             android:textSize="14sp" />
 
         <Button
-            android:id="@+id/button_mark_complete"
+            android:id="@+id/buttonMarkComplete"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/button_save_notes"
+            android:layout_below="@id/buttonSaveNotes"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="57dp"
             android:layout_marginBottom="41dp"
@@ -102,10 +102,10 @@
             android:textSize="20sp" />
 
         <TextView
-            android:id="@+id/textview_take_notes"
+            android:id="@+id/textViewTakeNotes"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/button_watch_lesson"
+            android:layout_below="@id/buttonWatchLesson"
             android:layout_centerHorizontal="false"
             android:layout_marginLeft="50dp"
             android:layout_marginTop="20dp"

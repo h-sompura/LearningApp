@@ -55,13 +55,9 @@ public class LessonListActivity extends AppCompatActivity {
                 SharedPreferences preferences = getSharedPreferences("saveLoginToggle", MODE_PRIVATE);
                 SharedPreferences.Editor editor = preferences.edit();
                 editor.putBoolean("isLoginSaved", false);
+                editor.clear();
                 editor.apply();
 
-
-                Intent intent = new Intent(LessonListActivity.this, MainActivity.class);
-                Log.d(TAG, "Logout button pressed");
-
-                startActivity(intent);
                 finish();
             }
         });
@@ -76,7 +72,7 @@ public class LessonListActivity extends AppCompatActivity {
 
     private void configureListView() {
         // lessonListView = findViewById(R.id.listview_lesson_list);
-        lessonListView = binding.listviewLessonList;
+        lessonListView = binding.listViewLessonList;
 
         lessonList = LessonList.getLessons();
 
@@ -93,6 +89,7 @@ public class LessonListActivity extends AppCompatActivity {
 
                 // Check for Sequential Progression...
                 if(binding.switchSequentialProgress.isChecked()) {
+
                     if(i != 0 && !lessonList.get(i - 1).isCompleted()) {
                         //creating a snackbar for seq toggle
                         Snackbar snackbar = Snackbar.make((findViewById(android.R.id.content)), "You have to complete lesson " + i +" to start this lesson.", Snackbar.LENGTH_LONG);

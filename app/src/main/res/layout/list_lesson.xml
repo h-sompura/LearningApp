@@ -15,7 +15,7 @@
         android:textSize="24sp" />
 
     <androidx.appcompat.widget.SwitchCompat
-        android:id="@+id/switch_sequential_progress"
+        android:id="@+id/switchSequentialProgress"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/appHeading"
@@ -25,11 +25,11 @@
         android:text="@string/force_sequential_progression" />
 
     <ListView
-        android:id="@+id/listview_lesson_list"
+        android:id="@+id/listViewLessonList"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_above="@+id/logoutButton"
-        android:layout_below="@id/switch_sequential_progress"
+        android:layout_below="@id/switchSequentialProgress"
         android:layout_marginTop="24dp"
         android:layout_marginBottom="-5dp">
 

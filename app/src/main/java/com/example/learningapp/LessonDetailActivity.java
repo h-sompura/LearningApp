@@ -64,14 +64,14 @@ public class LessonDetailActivity extends AppCompatActivity {
     }
 
     private void bindViews() {
-        lessonDetailTextView = binding.textviewLessonDetail;
-        lessonLengthTextView = binding.textviewLessonLength;
+        lessonDetailTextView = binding.textViewLessonDetail;
+        lessonLengthTextView = binding.textViewLessonLength;
         lessonNumberTextView = binding.lessonNumber;
-        lessonDescriptionTextView = binding.textviewLessonDescription;
+        lessonDescriptionTextView = binding.textViewLessonDescription;
         completeLessonButton = binding.buttonMarkComplete;
         watchLessonButton = binding.buttonWatchLesson;
         saveNotesButton = binding.buttonSaveNotes;
-        lessonNotesEditText = binding.edittextTakeNotes;
+        lessonNotesEditText = binding.editTextTakeNotes;
     }
 
     private void setActivityInformation() {
