@@ -1,7 +1,5 @@
 package com.example.learningapp;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
@@ -12,6 +10,8 @@ import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Switch;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.learningapp.databinding.ActivityMainBinding;
 import com.google.android.material.snackbar.Snackbar;
@@ -29,9 +29,9 @@ public class MainActivity extends AppCompatActivity {
     private Switch saveLoginSwitch;
     private Button loginButton;
 
-    private Boolean isLoginSaved;
+    private boolean isLoginSaved;
 
-    private ArrayList<User> usersList = new ArrayList<User>();
+    private final ArrayList<User> usersList = new ArrayList<>();
 
 
     @Override
@@ -46,7 +46,9 @@ public class MainActivity extends AppCompatActivity {
         password = this.binding.etPassword;
         saveLoginSwitch = this.binding.saveLoginToggle;
         loginButton = this.binding.loginButton;
+
 //        isLoginSaved = saveLoginSwitch.isChecked();
+
         SharedPreferences preferences = getSharedPreferences("saveLoginToggle", MODE_PRIVATE);
         saveLoginSwitch.setChecked(preferences.getBoolean("isLoginSaved", true));
         isLoginSaved = saveLoginSwitch.isChecked();
@@ -63,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         //programmatically creating the button onClick
-        this.binding.loginButton.setOnClickListener(new View.OnClickListener() {
+        loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, LessonListActivity.class);
@@ -92,6 +94,7 @@ public class MainActivity extends AppCompatActivity {
                     String enteredUsername = username.getText().toString();
                     String enteredPassword = password.getText().toString();
 
+                    //Initial workflow was to directly compare entered fields with desired fields before we changed this to handling using User class
 //                    if (!enteredUsername.equals("abcd")) {
 //                        //user enters something other than abcd
 //                        Snackbar snackbar = Snackbar.make(view, "The username does not exist", Snackbar.LENGTH_LONG);
@@ -178,8 +181,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //check if user exists
-    public Boolean isUsernamePresent(ArrayList<User> usersList, String username) {
-        Boolean result = true;
+    public boolean isUsernamePresent(ArrayList<User> usersList, String username) {
+        boolean result = true;
         for (User i : usersList) {
             if (i.getUsername().compareTo(username) == 0) {
                 result = false;
