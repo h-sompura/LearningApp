@@ -26,10 +26,8 @@
                 android:id="@+id/textViewLessonDetail"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignStart="@+id/lessonNumber"
                 android:layout_marginStart="2dp"
-                android:layout_marginLeft="54dp"
-                android:layout_marginRight="0dp"
+                android:layout_marginEnd="0dp"
                 tools:text="Lesson Title goes here" />
 
         </LinearLayout>
@@ -45,7 +43,8 @@
             android:text="@string/button_watch_lesson"
             android:textColor="@color/accent"
             android:textSize="12sp"
-            app:strokeColor="@color/accent" />
+            app:strokeColor="@color/accent"
+            tools:ignore="TextContrastCheck" />
 
         <TextView
             android:id="@+id/textViewLessonDescription"
@@ -67,6 +66,7 @@
 
         <EditText
             android:id="@+id/editTextTakeNotes"
+            android:importantForAutofill="no"
             android:layout_width="300dp"
             android:layout_height="200dp"
             android:layout_below="@+id/textViewTakeNotes"
@@ -107,7 +107,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/buttonWatchLesson"
             android:layout_centerHorizontal="false"
-            android:layout_marginLeft="50dp"
+            android:layout_marginStart="50dp"
             android:layout_marginTop="20dp"
             android:text="@string/text_view_take_note" />
 
