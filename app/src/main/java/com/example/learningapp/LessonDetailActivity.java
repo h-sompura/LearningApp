@@ -25,10 +25,10 @@ public class LessonDetailActivity extends AppCompatActivity {
 
     private ActivityLessonDetailBinding binding;
 
-    TextView lessonDetailTextView, lessonLengthTextView, lessonNumberTextView, lessonDescriptionTextView;
-    EditText lessonNotesEditText;
-    Button completeLessonButton, saveNotesButton, watchLessonButton;
-    Lesson lesson;
+    private TextView lessonDetailTextView, lessonLengthTextView, lessonNumberTextView, lessonDescriptionTextView;
+    private EditText lessonNotesEditText;
+    private Button completeLessonButton, saveNotesButton, watchLessonButton;
+    private Lesson lesson;
     SharedPreferences sharedpreferences;
 
     private String lessonNotesKey;
@@ -89,7 +89,7 @@ public class LessonDetailActivity extends AppCompatActivity {
         lessonNotesEditText.setText(sharedpreferences.getString(lessonNotesKey, ""));
 
         //add number
-        lessonNumberTextView.setText((String.valueOf(lesson.getLessonNumber()) + "."));
+        lessonNumberTextView.setText((lesson.getLessonNumber() + "."));
         lessonDescriptionTextView.setText(lesson.getDescription());
 
         lessonDetailTextView.setText(lesson.getName());

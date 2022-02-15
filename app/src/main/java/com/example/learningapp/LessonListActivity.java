@@ -24,8 +24,8 @@ public class LessonListActivity extends AppCompatActivity {
     //binding
     private ListLessonBinding binding;
 
-    ListView lessonListView;
-    ArrayList<Lesson> lessonList;
+    private ListView lessonListView;
+    private ArrayList<Lesson> lessonList;
     private LessonAdapter adapter;
 
     @Override
