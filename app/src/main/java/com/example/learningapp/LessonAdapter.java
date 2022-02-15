@@ -10,10 +10,9 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.example.learningapp.databinding.LessonListviewBinding;
-import com.example.learningapp.databinding.ListLessonBinding;
+
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class LessonAdapter extends ArrayAdapter<Lesson> {
 
